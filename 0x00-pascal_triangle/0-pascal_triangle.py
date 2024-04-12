@@ -4,6 +4,7 @@
 Python module to generate a Pascal triangle
 """
 
+
 def pascal_triangle(n):
     """
     Function pascal_triangle to generate n number of rows of pascal triangle
