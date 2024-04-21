@@ -1,10 +1,23 @@
 #!/usr/bin/python3
 
+"""
+a method that determines if all the boxes can be opened.
+given n number of lockboxes
+using depth-first search
+"""
+
+
 def canUnlockAll(boxes):
+    """
+    Function to check if a list of boxes can all be unlocked
+    """
     n = len(boxes)
     visited = [False] * n
 
     def dfs(i):
+        """
+        Fjnction defition for depth-first search
+        """
         if visited[i]:
             return
 
