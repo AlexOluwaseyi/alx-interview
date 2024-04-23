@@ -1,10 +1,14 @@
 #!/usr/bin/python3
 
+import sys
+
 """
 a method that determines if all the boxes can be opened.
 given n number of lockboxes
 using depth-first search
 """
+
+sys.setrecursionlimit(1005)
 
 
 def canUnlockAll(boxes):
