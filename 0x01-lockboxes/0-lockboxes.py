@@ -6,7 +6,8 @@ given n number of lockboxes
 using depth-first search
 """
 
-imporrt sys
+
+import sys
 sys.setrecursionlimit(1005)
 
 
