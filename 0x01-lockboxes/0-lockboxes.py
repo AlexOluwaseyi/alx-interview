@@ -1,13 +1,12 @@
 #!/usr/bin/python3
 
-import sys
-
 """
 a method that determines if all the boxes can be opened.
 given n number of lockboxes
 using depth-first search
 """
 
+imporrt sys
 sys.setrecursionlimit(1005)
 
 
