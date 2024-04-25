@@ -58,7 +58,7 @@ def minOperations(n):
 
     Non-integers and numbers less than or equal to 0
     """
-    if type(n) != int:
+    if type(n) != int or n <= 0:
         return 0
     dct = count_items(prime_factors(n))
     min_ops = 1
