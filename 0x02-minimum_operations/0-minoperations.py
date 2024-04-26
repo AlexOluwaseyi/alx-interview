@@ -58,14 +58,17 @@ def minOperations(n):
 
     Non-integers and numbers less than or equal to 0
     """
-    if type(n) != int or n <= 0:
+    if type(n) != int or n <= 1:
         return 0
-    dct = count_items(prime_factors(n))
-    min_ops = 1
-    for key, value in dct.items():
+
+    factors_list = prime_factors(n)
+    count_items_dict = count_items(factors_list)
+
+    min_ops = 0
+    for key, value in count_items_dict.items():
         if value == 1:
             min_ops += key
         else:
-            min_ops += value + 1
+            min_ops += value * key
 
     return min_ops
