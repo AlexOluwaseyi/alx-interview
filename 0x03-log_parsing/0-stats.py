@@ -47,8 +47,8 @@ def get_essentials(line):
     status_code = line.split()[-2]
     size = int(line.split()[-1])
 
-    if int(status_code) is ValueError:
-        return
+    if not status_code.isdigit():
+        return None
 
     if status_code not in status_record.keys():
         status_record[status_code] = 1
