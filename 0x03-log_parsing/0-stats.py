@@ -50,6 +50,8 @@ def get_essentials(line):
     if not status_code.isdigit():
         return None
 
+    status_code = int(status_code)
+
     if status_code not in status_record.keys():
         status_record[status_code] = 1
     else:
