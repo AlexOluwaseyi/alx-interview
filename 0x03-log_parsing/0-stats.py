@@ -18,7 +18,7 @@ script that reads stdin line by line and computes metrics:
   - format: <status code>: <number>
   - status codes should be printed in ascending order
 """
-
+'''
 import re
 import fileinput
 import signal
@@ -107,3 +107,60 @@ def execution():
 if __name__ == "__main__":
     """Call to execution() function here"""
     execution()
+'''
+
+import sys
+import signal
+
+# Global variables to track statistics
+total_file_size = 0
+status_codes = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
+line_count = 0
+
+def print_statistics():
+    """
+    Function to print statistics
+    """
+    global total_file_size
+    global status_codes
+    global line_count
+
+    print(f"Total file size: {total_file_size}")
+    for code, count in sorted(status_codes.items()):
+        if count > 0:
+            print(f"{code}: {count}")
+    print()
+
+def signal_handler(sig, frame):
+    """
+    Function to handle KeyboardInterrupt (^C)
+    """
+    print_statistics()
+    sys.exit(0)
+
+# Register the signal handler
+signal.signal(signal.SIGINT, signal_handler)
+
+# Process input
+for line in sys.stdin:
+    line = line.strip()
+    parts = line.split()
+    if len(parts) != 7:
+        continue
+
+    ip_address = parts[0]
+    status_code = parts[-2]
+    file_size = int(parts[-1])
+
+    # Update statistics
+    total_file_size += file_size
+    if status_code.isdigit():
+        status_code = int(status_code)
+        if status_code in status_codes:
+            status_codes[status_code] += 1
+
+    line_count += 1
+
+    # Print statistics after every 10 lines
+    if line_count % 10 == 0:
+        print_statistics()
