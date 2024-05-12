@@ -23,7 +23,7 @@ def validUTF8(data):
     while i < len(data):
         byte = data[i]
         num_bytes = 0
-        
+
         # Determine the number of bytes in the current character
         if (byte & 0x80) == 0:
             num_bytes = 1  # 0xxxxxxx
@@ -44,5 +44,5 @@ def validUTF8(data):
                 return False  # Invalid continuation byte
 
         i += num_bytes  # Move to the next character
-    
+
     return True
