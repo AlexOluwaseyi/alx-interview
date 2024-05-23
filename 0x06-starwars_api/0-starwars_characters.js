@@ -45,7 +45,7 @@ if (process.argv.length === 3) {
         try {
           const characterResponse = await requestGet(characterUrl);
           const characterBody = JSON.parse(characterResponse.body);
-          return `${characterBody.name}`;
+          console.log(`${characterBody.name}`);
         } catch (characterError) {
           console.error('Error fetching character data:', characterError);
         }
