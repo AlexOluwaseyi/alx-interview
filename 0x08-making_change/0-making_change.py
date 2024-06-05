@@ -1,6 +1,15 @@
 #!/usr/bin/python3
 
+"""
+Given a pile of coins of different values, determine the
+fewest number of coins needed to meet a given amount total.
+"""
+
+
 def makeChange(coins, total):
+    """Function to calculate and find the fewest number
+    of coins needed to reach a given amount total
+    """
     sorted_coins = sorted(coins, reverse=True)
     lcoins = len(sorted_coins)
     n = 0
