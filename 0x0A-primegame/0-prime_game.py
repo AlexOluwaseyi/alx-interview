@@ -44,6 +44,9 @@ def isWinner(x, nums):
     maria_wins = 0
     ben_wins = 0
 
+    if x <= 0:
+        return None
+
     for n in nums:
         winner = simulate_game(n)
         if winner == 'Maria':
